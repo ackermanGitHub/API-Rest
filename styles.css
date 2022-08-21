@@ -19,18 +19,21 @@ h1 {
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     place-items: center;
     padding: 20px;
 }
-.container .image {
+.cat-image {
+    width: 20rem;
+    height: auto;
+    margin: 35px 40px;
     border-radius: 20px;
-    margin: 20px;
-    width: auto;
-    height: 500px;
+}
+#cats-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 .random-cat-button {
-    align-items: center;
     background-color: rgb(94, 197, 228);
     border: 5px solid rgb(66, 78, 249);
     border-radius: 15px;
