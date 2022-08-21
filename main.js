@@ -1,12 +1,13 @@
-console.log('Hello World');
-
+const img = document.querySelector('img');
 const API_URL ='https://api.thecatapi.com/v1/images/search'; 
 
+async function fetchData(urlApi) {
+	const response = await fetch(urlApi);
+	const data = await response.json();
+	return data;
+}
+
 async function reload(){
-    fetch(API_URL)
-    .then(res => res.json())
-    .then(data => {
-        const img = document.querySelector('img');
-        img.src = data[0].url;
-    })
+    const data = await fetchData(API_URL)
+    img.src = data[0].url;
 }
