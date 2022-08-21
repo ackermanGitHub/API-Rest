@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gatitos Aleatorios</title>
+    <link rel="stylesheet" href="./styles.css">
+    <title>Random Cats with API REST</title>
 </head>
 <body>
-    <h1>Gatitos Aleatorios</h1>
+    <header>
+        <h1>Random Cats</h1>
+    </header>
+    <section class="container">
+        <img alt="Imágenes aleatorias de gatos" class="image">
+        <button type="button" onclick = "reload()" class="random-cat-button">Reload</button>
+    </section>
 
-    <img src="" alt="Foto gatito aleatorio">
 
-    <button onclick = "reload()">Reload</button>
-
-    <script src="main.js"></script>
+    <script src="./main.js"></script>
 </body>
 </html>
