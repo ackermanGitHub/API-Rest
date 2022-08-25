@@ -3,33 +3,59 @@ const toggleBtn = document.querySelector('.sidebar-toggle');
 const sidebar = document.querySelector('.sidebar');
 
 toggleBtn.addEventListener('click', function(){
+	loadFavoritesCats();
     sidebar.classList.toggle('show-sidebar');
 });
 closeBtn.addEventListener('click', function(){
     sidebar.classList.remove('show-sidebar');
 });
 
-const img = document.querySelector('img');
 const catsContainer = document.getElementById('cats-container');
-const API_URL ='https://api.thecatapi.com/v1/images/search'; 
-const API_EMAIL = 'https://api.thecatapi.com/v1/images/search?limit=3&api_key=live_zGbHakZXB3PQaPjIqz6gWz05V4uIGtQOhwgUv0sAqJyt8aJzfUgS5lKngL3Dp0Wn';
- 
+const favoritesCatsContainer = document.getElementById('favorites-cats-container');
+
+const API_URL_RANDOM ='https://api.thecatapi.com/v1/images/search?limit=3'; 
+const API_URL_FAVORITES ='https://api.thecatapi.com/v1/favourites?api_key=live_zGbHakZXB3PQaPjIqz6gWz05V4uIGtQOhwgUv0sAqJyt8aJzfUgS5lKngL3Dp0Wn';
+const API_KEY = 'live_zGbHakZXB3PQaPjIqz6gWz05V4uIGtQOhwgUv0sAqJyt8aJzfUgS5lKngL3Dp0Wn'; 
+
 const catsLoaded = [];
+const favoritesCats = [];
 
-async function fetchData(urlApi) {
-	let res = await fetch(urlApi);
-	res = await res.json();
-	return res;
-}
-
-async function reload(){
-    const data = await fetchData(API_URL + '?limit=3' + '&api_key=live_zGbHakZXB3PQaPjIqz6gWz05V4uIGtQOhwgUv0sAqJyt8aJzfUgS5lKngL3Dp0Wn');
+async function loadRandomCats(){
+    const res = await fetch(API_URL_RANDOM);
+	const data = await res.json();
 	data.forEach(cat => catsLoaded.push(cat));
 	catsContainer.innerHTML = null;
 	data.forEach(element => {
-		catsContainer.innerHTML += `<img src=${element.url} alt="Imágenes aleatorias de gatos" class="cat-image">`
+		catsContainer.innerHTML += `
+		<button class="cats-btn" type="buttom">
+			<img src=${element.url} alt="Imágenes aleatorias de gatos" class="cats-img">
+		</button>
+		`
 	});
 }
 
-reload();
+async function loadFavoritesCats() {
+	const res = await fetch(API_URL_FAVORITES);
+	const data = await res.json();
+	favoritesCatsContainer.innerHTML = null;
+	data.forEach(element => {
+		favoritesCatsContainer.innerHTML += `
+		<button class="favorites-cats-btn" type="buttom">
+			<img src=${element.image.url} alt="Imágenes favoritas de gatos" class="favorites-cats-img">
+		</button>
+		`
+	});
+}
 
+async function saveFavouriteCat(id) {
+	const res = await fetch(API_URL_FAVORITES, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({
+			image_id: id,
+		}),
+	});
+	await loadFavoritesCats();
+}

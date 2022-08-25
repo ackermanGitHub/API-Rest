@@ -17,61 +17,23 @@ header {
 
 /* Nav */
 .header-nav{
-    display: flex;     
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: space-between;
+    display: flex;
     background-color: antiquewhite;
     top: 10px;
     height: 7vh;
     width: 97%;
     min-width: 300px;
     border-radius: 15px;
+    flex-direction: row-reverse;
+    align-items: center;
 }
-
-/* PegaPega Logo */
-/* 
-.nav-logo{    
-    margin-left: 5%;
-}
-.nav--logo-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-self: center;    
-    text-align: center;
-    width: 36px;
-    height: 36px;
-    background-color: red;
-    border-radius: 50%;
-}
-.nav--logo-container h6 {
-    font-size: 0.9rem;  
-    font-weight: 500;
-    color: white;     
-} 
-*/
-
-/* Nav Buttons */
-/* 
-.nav--buttons-container {
-    display: flex;
-    
-}
-.nav-buttons {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: black;
-    margin-right: 20px;
-} 
-*/
 
 /* Nav Sidebar-Opener */
 .sidebar-toggle {
     background-color: transparent;
     width: auto;
     border: none;
-    margin-right: 7%;
+    margin-right: 10px;
 }
 .sidebar-img {
     cursor: pointer;
@@ -85,7 +47,7 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    width: 50%;
+    width: 30%;
     height: 100%;
     background: white;
     display: flex;
@@ -97,14 +59,6 @@ header {
     display: flex;    
     margin-top: 60px;    
     justify-content: flex-end;
-}
-.ul-fab li {
-    background: white;
-    transition: border 0.3s;
-}
-.ul-fab li:hover {
-    background: #444;
-    border-left: 5px solid #eee;
 }
 .show-sidebar{
     transform: translate(0);
@@ -121,27 +75,14 @@ header {
     width: 30px;
     height: 30px;
 }
-/* Social Networks List */
-.ul-fab {
-    margin-top: 40px;
-    margin-left: 15%;
-}
-.li-fab {
-    margin-top: 20px;
-}
-.fab {
-    font-size: 1.8rem;
-    text-decoration: none;
-    color: black;
-    font-weight: 500;
-}
+
 
 body {
     font-family: 'Square Peg', cursive;
 }
 
 .page-title {
-    font-size: 8rem;   
+    font-size: 4rem;   
 }
 .container {
     display: flex;
@@ -149,10 +90,15 @@ body {
     place-items: center;
     padding: 20px;
 }
-.cat-image {
+.cats-btn {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    margin: 20px 30px;
+}
+.cats-img {
     width: 20rem;
     height: auto;
-    margin: 35px 40px;
     border-radius: 20px;
 }
 #cats-container{
@@ -174,4 +120,24 @@ body {
 .random-cat-button:hover {
     border: 5px solid rgb(94, 197, 228);
     background-color: rgb(66, 78, 249);
+}
+
+#favorites-cats-container {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+.favorites-cats-btn{
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    margin-bottom: 20px;
+}
+.favorites-cats-img{
+    width: 15rem;
+    height: auto;
+    border-radius: 20px;
 }
