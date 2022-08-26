@@ -68,7 +68,7 @@ header {
     display: flex;
     flex-direction: column;
     transition: all 0.3s;
-    overflow: scroll;
+    overflow-x: auto;
     transform: translate(-100%);
 }
 .aside-logo {
@@ -123,7 +123,7 @@ body {
 .page-title {
     font-size: 4rem;   
 }
-.container {
+.main-container {
     display: flex;
     flex-direction: column;
     place-items: center;
@@ -149,17 +149,25 @@ input:checked + label {
     flex-wrap: wrap;
     justify-content: space-around;
 }
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    width: 30vw;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
 .random-cat-button {
     background-color: var(--secondary-blue);
     border: 5px solid transparent;
     border-radius: 15px;
     cursor: pointer;
     font-family: 'Pacifico', cursive;
+    width: 150px;
     font-size: 2rem;
-    padding: 12px;
-    width: 200px;
     height: auto;
-    margin-top: 80px;
+    margin-top: 30px;
 }
 .random-cat-button:hover {
     border: 5px solid var(--main-blue);
@@ -170,11 +178,10 @@ input:checked + label {
     border-radius: 15px;
     cursor: pointer;
     font-family: 'Pacifico', cursive;
+    width: 150px;
     font-size: 2rem;
-    padding: 12px;
-    width: 200px;
     height: auto;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 .add-favorite:hover {
     border: 5px solid var(--main-blue);

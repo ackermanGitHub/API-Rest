@@ -18,6 +18,7 @@ const API_URL_FAVORITES ='https://api.thecatapi.com/v1/favourites?api_key=live_z
 const API_KEY = 'live_zGbHakZXB3PQaPjIqz6gWz05V4uIGtQOhwgUv0sAqJyt8aJzfUgS5lKngL3Dp0Wn'; 
 
 const catsLoaded = [];
+let currentCats = [];
 const favoritesCats = [];
 
 async function loadRandomCats(){
@@ -25,11 +26,13 @@ async function loadRandomCats(){
 	const data = await res.json();
 	data.forEach(cat => catsLoaded.push(cat));
 	catsContainer.innerHTML = null;
+	currentCats = [];
 	data.forEach(element => {
+		currentCats.push(element);
 		catsContainer.innerHTML += `
 		<input type="radio" name="cat" id=${element.id} />
 		<label class="cats-label" for=${element.id}>
-			<img class="cats-img" src=${element.url} alt=${element.id}>
+			<img class="cats-img" src=${element.url} alt="random cat">
 		</label>  
 		`
 	});
@@ -46,6 +49,14 @@ async function loadFavoritesCats() {
 		</button>
 		`
 	});
+}
+
+async function checkCat() {
+	let checkedCat = false;
+	checkedCat = currentCats.find(element => document.getElementById(element.id).checked);
+	if(checkedCat) {
+		saveFavoriteCat(checkedCat.id);
+	}
 }
 
 async function saveFavoriteCat(id) {
