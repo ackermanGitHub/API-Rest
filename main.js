@@ -27,9 +27,10 @@ async function loadRandomCats(){
 	catsContainer.innerHTML = null;
 	data.forEach(element => {
 		catsContainer.innerHTML += `
-		<button class="cats-btn" type="buttom">
-			<img src=${element.url} alt="Imágenes aleatorias de gatos" class="cats-img">
-		</button>
+		<input type="radio" name="cat" id=${element.id} />
+		<label class="cats-label" for=${element.id}>
+			<img class="cats-img" src=${element.url} alt=${element.id}>
+		</label>  
 		`
 	});
 }
@@ -47,7 +48,7 @@ async function loadFavoritesCats() {
 	});
 }
 
-async function saveFavouriteCat(id) {
+async function saveFavoriteCat(id) {
 	const res = await fetch(API_URL_FAVORITES, {
 		method: 'POST',
 		headers: {

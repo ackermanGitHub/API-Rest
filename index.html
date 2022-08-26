@@ -11,16 +11,17 @@
     <header>
         <nav class="header-nav">
             <button class="sidebar-toggle">
-                <h2 class="nav-sidebar-title">Favorites Cats</h2>
+                <h2 class="nav-sidebar-title">Favorites</h2>
                 <img src="assets/sidebar-icon.png" alt="" class="sidebar-img">
             </button>
         </nav>       
         <h1 class="page-title">Random Cats</h1>         
         <aside class="sidebar">
             <div class="aside-logo">
+                <h3 class="sidebar-title">Favorites Menu</h3>
                 <button class="close-btn">
                     <img src="assets/close_sidebar-icon.png" alt="" class="close-sidebar-img">
-                </button>                
+                </button>          
             </div>
             <div id="favorites-cats-container">
 
@@ -30,6 +31,7 @@
     <section class="container">
         <div id="cats-container"></div>
         <button type="button" onclick="loadRandomCats()" class="random-cat-button">Reload</button>
+        <button type="button" class="add-favorite">Add Favorite</button>
     </section>
     <script src="./main.js"></script>
 </body>
