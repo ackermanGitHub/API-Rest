@@ -66,6 +66,7 @@ header {
     height: 100%;
     background: var(--winter);
     display: flex;
+    align-items: center;
     flex-direction: column;
     transition: all 0.3s;
     overflow-x: auto;
@@ -103,16 +104,28 @@ header {
     justify-content: space-around;
     align-items: flex-end;
 }
-.favorites-cats-btn{
+.favorites-cats-label{
     cursor: pointer;
     border: none;
     background-color: transparent;
     margin-bottom: 20px;
 }
-.favorites-cats-img{
-    width: 25vw;
+.favorites-cats-img {
+    width: 20vw;
     height: auto;
     border-radius: 20px;
+}
+.delete-favorite-btn {
+    background-color: var(--secondary-blue);
+    border: 5px solid transparent;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: 'Pacifico', cursive;
+    width: 150px;
+    font-size: 2rem;
+    height: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 body {
@@ -137,7 +150,7 @@ body {
 }
 input:checked + label {
     transform: scale(118%);
-  }
+}
 .cats-img {
     width: 20rem;
     height: auto;
@@ -149,7 +162,7 @@ input:checked + label {
     flex-wrap: wrap;
     justify-content: space-around;
 }
-.button-container {
+.main-button-container {
     display: flex;
     flex-wrap: wrap;
     margin-top: 50px;
@@ -158,7 +171,7 @@ input:checked + label {
     align-content: center;
     align-items: center;
 }
-.random-cat-button {
+.random-cat-btn {
     background-color: var(--secondary-blue);
     border: 5px solid transparent;
     border-radius: 15px;
@@ -169,10 +182,10 @@ input:checked + label {
     height: auto;
     margin-top: 30px;
 }
-.random-cat-button:hover {
+.random-cat-btn:hover {
     border: 5px solid var(--main-blue);
 }
-.add-favorite {
+.add-favorite-btn {
     background-color: var(--secondary-blue);
     border: 5px solid transparent;
     border-radius: 15px;
@@ -183,7 +196,7 @@ input:checked + label {
     height: auto;
     margin-top: 30px;
 }
-.add-favorite:hover {
+.add-favorite-btn:hover {
     border: 5px solid var(--main-blue);
 }
 
@@ -191,4 +204,9 @@ input:checked + label {
     .sidebar-title {
       display: none;
     }
-  }
+}
+@media (max-width: 1000px) {
+    .button-container {
+      justify-content: center;
+    }
+}

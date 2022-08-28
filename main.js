@@ -13,13 +13,14 @@ closeBtn.addEventListener('click', function(){
 const catsContainer = document.getElementById('cats-container');
 const favoritesCatsContainer = document.getElementById('favorites-cats-container');
 
-const API_URL_RANDOM ='https://api.thecatapi.com/v1/images/search?limit=3'; 
+const API_URL_RANDOM ='https://api.thecatapi.com/v1/images/search?limit=2'; 
 const API_URL_FAVORITES ='https://api.thecatapi.com/v1/favourites?api_key=live_zGbHakZXB3PQaPjIqz6gWz05V4uIGtQOhwgUv0sAqJyt8aJzfUgS5lKngL3Dp0Wn';
+const API_URL_FAVORITES_DELETE = (id) => `https://api.thecatapi.com/v1/favourites/${id}?api_key=live_zGbHakZXB3PQaPjIqz6gWz05V4uIGtQOhwgUv0sAqJyt8aJzfUgS5lKngL3Dp0Wn`;
 const API_KEY = 'live_zGbHakZXB3PQaPjIqz6gWz05V4uIGtQOhwgUv0sAqJyt8aJzfUgS5lKngL3Dp0Wn'; 
 
 const catsLoaded = [];
 let currentCats = [];
-const favoritesCats = [];
+let favoritesCats = [];
 
 async function loadRandomCats(){
     const res = await fetch(API_URL_RANDOM);
@@ -42,21 +43,16 @@ async function loadFavoritesCats() {
 	const res = await fetch(API_URL_FAVORITES);
 	const data = await res.json();
 	favoritesCatsContainer.innerHTML = null;
+	favoritesCats = [];
 	data.forEach(element => {
+		favoritesCats.push(element);
 		favoritesCatsContainer.innerHTML += `
-		<button class="favorites-cats-btn" type="buttom">
-			<img src=${element.image.url} alt="Imágenes favoritas de gatos" class="favorites-cats-img">
-		</button>
+		<input type="radio" name="cat" id=${element.id} />
+		<label class="favorites-cats-label" for=${element.id}>
+			<img class="favorites-cats-img" src=${element.image.url} alt="Imágenes favoritas de gatos">
+		</label>  
 		`
 	});
-}
-
-async function checkCat() {
-	let checkedCat = false;
-	checkedCat = currentCats.find(element => document.getElementById(element.id).checked);
-	if(checkedCat) {
-		saveFavoriteCat(checkedCat.id);
-	}
 }
 
 async function saveFavoriteCat(id) {
@@ -70,4 +66,26 @@ async function saveFavoriteCat(id) {
 		}),
 	});
 	await loadFavoritesCats();
+}
+
+async function checkCat() {
+	let checkedCat = false;
+	checkedCat = currentCats.find(element => document.getElementById(element.id).checked);
+	if(checkedCat) {
+		saveFavoriteCat(checkedCat.id);
+	}
+}
+
+async function deleteFavoriteCat(id) {
+	const res = await fetch(API_URL_FAVORITES_DELETE(id), {
+		method: 'DELETE',
+	});
+	await loadFavoritesCats();
+}
+async function checkFavoriteCat() {
+	let checkedCat = false;
+	checkedCat = favoritesCats.find(element => document.getElementById(element.id).checked);
+	if(checkedCat) {
+		deleteFavoriteCat(checkedCat.id);
+	}
 }

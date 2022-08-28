@@ -19,20 +19,21 @@
         <aside class="sidebar">
             <div class="aside-logo">
                 <h3 class="sidebar-title">Favorites Menu</h3>
-                <button class="close-btn">
+                <button type="button" class="close-btn">
                     <img src="assets/close_sidebar-icon.png" alt="" class="close-sidebar-img">
                 </button>          
             </div>
             <div id="favorites-cats-container">
 
             </div>
+            <button type="button" class="delete-favorite-btn" onclick="checkFavoriteCat()">Delete</button>
         </aside>
     </header>
     <main class="main-container">
         <section id="cats-container"></section>
-        <section class="button-container">
-            <button type="button" onclick="loadRandomCats()" class="random-cat-button">Reload</button>
-            <button type="button" class="add-favorite" onclick="checkCat()">Add Favorite</button>
+        <section class="main-button-container">
+            <button type="button" onclick="loadRandomCats()" class="random-cat-btn">Reload</button>
+            <button type="button" class="add-favorite-btn" onclick="checkCat()">Add Favorite</button>
         </section>        
     </main>
     <script src="./main.js"></script>
