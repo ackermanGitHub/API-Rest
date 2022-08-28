@@ -17,6 +17,7 @@ const API_URL_RANDOM ='https://api.thecatapi.com/v1/images/search?limit=2';
 const API_URL_FAVORITES ='https://api.thecatapi.com/v1/favourites?api_key=live_zGbHakZXB3PQaPjIqz6gWz05V4uIGtQOhwgUv0sAqJyt8aJzfUgS5lKngL3Dp0Wn';
 const API_URL_FAVORITES_DELETE = (id) => `https://api.thecatapi.com/v1/favourites/${id}?api_key=live_zGbHakZXB3PQaPjIqz6gWz05V4uIGtQOhwgUv0sAqJyt8aJzfUgS5lKngL3Dp0Wn`;
 const API_KEY = 'live_zGbHakZXB3PQaPjIqz6gWz05V4uIGtQOhwgUv0sAqJyt8aJzfUgS5lKngL3Dp0Wn'; 
+const API_URL_UPLOAD ='https://api.thecatapi.com/v1/images/upload';
 
 const catsLoaded = [];
 let currentCats = [];
@@ -31,7 +32,7 @@ async function loadRandomCats(){
 	data.forEach(element => {
 		currentCats.push(element);
 		catsContainer.innerHTML += `
-		<input type="radio" name="cat" id=${element.id} />
+		<input type="radio" name="cat" id=${element.id} class="hidden-input"/>
 		<label class="cats-label" for=${element.id}>
 			<img class="cats-img" src=${element.url} alt="random cat">
 		</label>  
@@ -47,7 +48,7 @@ async function loadFavoritesCats() {
 	data.forEach(element => {
 		favoritesCats.push(element);
 		favoritesCatsContainer.innerHTML += `
-		<input type="radio" name="cat" id=${element.id} />
+		<input type="radio" name="cat" id=${element.id} class="hidden-input"/>
 		<label class="favorites-cats-label" for=${element.id}>
 			<img class="favorites-cats-img" src=${element.image.url} alt="Imágenes favoritas de gatos">
 		</label>  
@@ -82,10 +83,25 @@ async function deleteFavoriteCat(id) {
 	});
 	await loadFavoritesCats();
 }
+
 async function checkFavoriteCat() {
 	let checkedCat = false;
 	checkedCat = favoritesCats.find(element => document.getElementById(element.id).checked);
 	if(checkedCat) {
 		deleteFavoriteCat(checkedCat.id);
 	}
+}
+
+async function uploadCatPhoto(){
+	const form = document.getElementById('uploading-form');
+	const formData = new FormData(form);
+	const res = await fetch(API_URL_UPLOAD, {
+		method: 'POST',
+		headers: {
+			'X-API-Key': API_KEY,
+		},
+		body: formData,
+	})
+	const data = await res.json(res);
+	saveFavoriteCat(data.id)
 }

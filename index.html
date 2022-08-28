@@ -34,7 +34,14 @@
         <section class="main-button-container">
             <button type="button" onclick="loadRandomCats()" class="random-cat-btn">Reload</button>
             <button type="button" class="add-favorite-btn" onclick="checkCat()">Add Favorite</button>
-        </section>        
+        </section>    
+        <section id="uploading-cat-section">
+            <h2 class="form-title">Upload Cat Photo</h2>
+            <form id="uploading-form">
+                <input id="file" type="file" name="file">
+                <button type="button" onclick="uploadCatPhoto()">Upload</button>
+            </form>
+        </section>    
     </main>
     <script src="./main.js"></script>
 </body>
