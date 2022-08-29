@@ -38,11 +38,14 @@
         <section id="uploading-cat-section">
             <h2 class="form-title">Upload Cat Photo</h2>
             <form id="uploading-form">
-                <input id="file" type="file" name="file">
-                <button type="button" onclick="uploadCatPhoto()">Upload</button>
+                <input id="uploading-file" type="file" name="uploading-file">
             </form>
+            <label for="uploading-file" class="file-label">Select File</label>
+            <div class="uploading-file-value">
+            </div>
         </section>    
     </main>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./main.js"></script>
 </body>
 </html>

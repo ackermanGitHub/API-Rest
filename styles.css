@@ -208,14 +208,50 @@ body {
     align-items: center;
     box-shadow: -2px -1px 23px -1px rgba(0,0,0,0.75);
     border-radius: 3rem;
-    height: 70vh;
-    width: 50vw;
+    height: auto;
+    width: 80vw;
     background-color: white;
     margin-top: 7rem;
 }
 
 .form-title {
     font-size: 3rem;
+}
+.file-label {
+    background-color: var(--soft-yellow);
+    border: 5px solid var(--medium-orange);
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: 'Pacifico', cursive;
+    width: 150px;
+    font-size: 2rem;
+    height: auto;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.uploading-file-value {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.uploaded-image{
+    width: 40%;
+}
+.upload-btn {
+    background-color: var(--secondary-blue);
+    border: 5px solid var(--main-blue);
+    font-weight: 700;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: 'Pacifico', cursive;
+    width: 120px;
+    font-size: 1.5rem;
+    margin-top: 15px;
+    height: auto;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 @media (max-width: 640px) {
